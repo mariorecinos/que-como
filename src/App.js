@@ -25,7 +25,7 @@ function App() {
   const API_URL = 'http://localhost:3001/api/stores'; // DEV URL
   // API_URL FOR PRODUCTION
 
-  // Store Helper Functions
+  // Store Helper Functions // get Stores
   const getStores = async () => {
     if(!user) return;
 
@@ -40,7 +40,26 @@ function App() {
     const stores = await response.json();
     setStores(stores);
   }
-  
+  // Create Store
+  const createStore = async person => {
+    if(!user) return;
+    const token = await user.getIdToken();
+    const data = {...person, managedBy: user.uid} // attach loggin in user's uid to the data we send to the server
+    await fetch(API_URL, {
+      method: 'POST',
+      headers: {
+        'Content-type': 'Application/json',
+        'Authorization': 'Bearer ' + token
+      },
+      body: JSON.stringify(data)
+    });
+    getStores(); // we can now refresh our list of stores
+  }
+  //Create Review
+  const createReview = async (note, id) => {
+    if(!user) return
+  }
+
   return (
     <>
     <Header />
