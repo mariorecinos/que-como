@@ -57,7 +57,18 @@ function App() {
   }
   //Create Review
   const createReview = async (note, id) => {
-    if(!user) return
+    if(!user) return;
+    const token = await user.getIdToken();
+    const data = { ...createReview, createdBy: user.uid };
+    await fetch(`${API_URL}/${id}/notes`, {
+      method: 'POST',
+      headers: {
+        'Content-type': 'Applicaton/json',
+        'Authorization': 'Bearer ' + token
+      },
+      body: JSON.stringify(data)
+    });
+    getStores();
   }
 
   return (
