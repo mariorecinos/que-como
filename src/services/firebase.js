@@ -1,3 +1,4 @@
+// import firebase dependencies
 import firebase from 'firebase/app';
 import 'firebase/auth';
 
@@ -17,6 +18,7 @@ firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const provider = new firebase.auth.GoogleAuthProvider()
 
+//signIn and logout functions
 function signIn() {
   return auth.signInWithPopup(provider);
 }
@@ -24,7 +26,7 @@ function signIn() {
 function logOut() {
   return auth.signOut();
 }
-
+// exporting in order to be used in other files
 export {
   auth,
   signIn,
