@@ -36,10 +36,11 @@ function App() {
       headers: {
         'Authorization': 'Bearer ' + token
       }
-      const stores = await.response.json();
-      setStores(stores);
-    })
+    });
+    const stores = await response.json();
+    setStores(stores);
   }
+  
   return (
     <>
     <Header />
