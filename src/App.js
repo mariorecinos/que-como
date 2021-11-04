@@ -71,6 +71,27 @@ function App() {
     getStores();
   }
 
+  // create a reference to our createStore function that persist between renders
+  // this will help mitigate memory leaks
+  useEffect(() => {
+    fetchData.current = getStores;
+  });
+
+  // useEffect to only to render state once
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(user => {
+      setUser(user);
+
+      if(user) {
+        fetchData.current();
+      } else {
+        setStores([]);
+      }
+    });
+
+    return () => unsubscribe(); // clean up action - remove observer from memory when not needed
+  }, [user]);
+  
   return (
     <>
     <Header />
