@@ -91,20 +91,33 @@ function App() {
 
     return () => unsubscribe(); // clean up action - remove observer from memory when not needed
   }, [user]);
-  
+
   return (
     <>
-    <Header />
+    <Header user={user}/>
     <Switch>
       <Route exact path="/">
         <Home />
       </Route>
-      <Route path="/login">
-        <Login />
-      </Route>
-      <Route path="/Dashboard">
-        <Dashboard />
-      </Route>
+      <Route path="/login" render={() => (
+        user ? <Redirect to="/dashboard" /> : <Login />
+      )} />
+      <Route path="/dashboard" render={() => (
+        user ? (
+          <Dashboard
+            stores={stores}
+            createStore={createStore}
+          />
+        ) : <Redirect to="/login" />
+      )} />
+      <Route path="/stores/:id" render={(props) => (
+        user ? (
+          <Show
+            store={stores.find(s => s._id === props.match.params.id)}
+            createReview={createReview}
+          />
+        ) : <Redirect to="/login" />
+      )} />
     </Switch>
     <Footer />
     </>
