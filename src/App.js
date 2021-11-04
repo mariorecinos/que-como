@@ -28,7 +28,17 @@ function App() {
   // Store Helper Functions
   const getStores = async () => {
     if(!user) return;
-    
+
+    // get a secure id token from our firebase user
+    const token = await user.getIdToken();
+    const response = await fetch(API_URL, {
+      method: 'GET',
+      headers: {
+        'Authorization': 'Bearer ' + token
+      }
+      const stores = await.response.json();
+      setStores(stores);
+    })
   }
   return (
     <>
