@@ -14,6 +14,22 @@ import { auth } from './services/firebase';
 import './App.css';
 
 function App() {
+
+  // setting up state for user
+  const [ user, setUser ] = useState(null);
+  // setting up state for store
+  const [ stores, setStores ] = useState([]);
+  // useRef Fetch Data
+  const fetchData = useRef(null);
+  // API URL FOR DEVELOPMENT
+  const API_URL = 'http://localhost:3001/api/stores'; // DEV URL
+  // API_URL FOR PRODUCTION
+
+  // Store Helper Functions
+  const getStores = async () => {
+    if(!user) return;
+    
+  }
   return (
     <>
     <Header />
