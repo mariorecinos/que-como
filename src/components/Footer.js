@@ -1,10 +1,10 @@
-
+import { StyledFooter } from "../styles";
 
 const Footer = (props) => {
   return (
-    <footer>
+    <StyledFooter>
       <h1>Copyright &copy; All Rights Reserved Que Como {new Date().getFullYear()}</h1>
-    </footer>
+    </StyledFooter>
   );
 };
 

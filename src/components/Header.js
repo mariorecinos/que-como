@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom';
 import { logOut } from '../services/firebase';
+import { StyledHeader } from '../styles';
 
 const Header = (props) => {
   return (
-    <header>
-      <h1>Header</h1>
+    <StyledHeader>
+      <h1>Que Como</h1>
       <nav>
         <ul>
           {
@@ -28,7 +29,7 @@ const Header = (props) => {
           }
         </ul>
       </nav>
-    </header>
+    </StyledHeader>
   );
 };
 

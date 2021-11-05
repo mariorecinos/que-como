@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react-router-dom';
+import { useState, useEffect, useRef } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 import Header from './components/Header';
@@ -56,11 +56,11 @@ function App() {
     getStores(); // we can now refresh our list of stores
   }
   //Create Review
-  const createReview = async (note, id) => {
+  const createReview = async (review, id) => {
     if(!user) return;
     const token = await user.getIdToken();
-    const data = { ...createReview, createdBy: user.uid };
-    await fetch(`${API_URL}/${id}/notes`, {
+    const data = { ...review, createdBy: user.uid };
+    await fetch(`${API_URL}/${id}/review`, {
       method: 'POST',
       headers: {
         'Content-type': 'Applicaton/json',
