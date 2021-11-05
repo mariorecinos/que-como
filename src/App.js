@@ -22,7 +22,7 @@ function App() {
   // useRef Fetch Data
   const fetchData = useRef(null);
   // API URL FOR DEVELOPMENT
-  const API_URL = 'http://localhost:3001/api/stores'; // DEV URL
+  const API_URL = 'https://que-como-api.herokuapp.com/'; // DEV URL
   // API_URL FOR PRODUCTION
 
   // Store Helper Functions // get Stores
