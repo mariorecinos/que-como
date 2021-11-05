@@ -7,10 +7,10 @@ A Site To Save And Share Your Favorite Spots
 * Styled-Components
 * Deployed on Netlify
 # ScreenShots
-<img src="">
+<img src="src/images/que-como.png">
 
 # Getting Started
-[Click Here]() to see deployed app.
+[Click Here](https://que-como.netlify.app/) to see deployed app.
 
 # Future Enhancements
 * Connect To Doordash, Grubhub, UberEats, Postmates API
